@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	h2 {
+	text-align: center;
+    color: #1a1281;
+}
+
+form {
+	width: 300px;
+	margin: 0 auto;
+	background-color: purple;
+}
+
+label {
+	display: block;
+	margin-top: 10px;
+}
+
+input[type="text"], input[type="password"] {
+	width: 90%;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+}
+
+input[type="button"] {
+	background-color: #84a50f;
+	color: white;
+	padding: 10px 20px;
+	margin-top: 10px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type="button"]:hover {
+	background-color: rgb(128, 14, 99);
+}
+
+</style>
+	<title>Login </title>
+	<link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body style="border: solid black;margin-left: 35%;margin-right: 35%;">
+	<h2>Login Form</h2>
+	<form style="background-color: rgb(211, 192, 255);">
+		<label for="username">Username</label>
+		<input type="text" id="username" name="username" placeholder="Enter your username">
+
+		<label for="password">Password</label>
+		<input type="password" id="password" name="password" placeholder="Enter your password">
+
+		<input type="button" value="Login" onclick="login()">
+		
+	</form>
+
+
+</body>
+<script>
+    let contactinf = document.querySelector('.login');
+    let al = document.querySelector('.box-form')
+    contactinf.addEventListener('click',function(event){
+    event.preventDefault();
+    let nam = document.querySelector('#username').value;
+    let pass = document.querySelector('#password').value;
+
+
+ if (nam === "admin" && pass === "password") {
+       let contact = JSON.parse(localStorage.getItem("contact"))||[];
+       let contactinfo = "";
+       for(let a = 0;a < contact.length;a++) {
+             contactinfo += "<h1>" + (a+1) + "</h1>";
+             contactinfo += "<p><strong>NAME:</strong>" + contact[a].name + "</p>";
+             contactinfo += "<p><strong>EMAIL:</strong>" + contact[a].adress + "</p>";
+              contactinfo += "<p><strong>MESSAGE:</strong>" + contact[a].email + "</p>";
+             contactinfo += "<p><strong>MESSAGE:</strong>" + contact[a].message + "</p>";
+         };
+        
+         document.getElementById("info").innerHTML=contactinfo;
+ }
+ else {
+     alert("invalid username or password");
+ };
+</html>
